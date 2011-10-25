@@ -18,7 +18,6 @@ namespace TestRunner {
                 .UnicastBus()
                     .DoNotAutoSubscribe()
                     .LoadMessageHandlers()
-                    .ForwardReceivedMessagesTo("AuditService")
                 .ServiceBrokerTransport()
                     .ReturnService("ServiceA")
                     .InputQueue("ServiceAQueue")
@@ -26,6 +25,7 @@ namespace TestRunner {
                     .ErrorService("ErrorService")
                     .MaxRetries(2)
                     .NumberOfWorkerThreads(2)
+                    .ForwardReceivedMessagesTo("AuditService")
                 .CreateBus()
                 .Start();
 

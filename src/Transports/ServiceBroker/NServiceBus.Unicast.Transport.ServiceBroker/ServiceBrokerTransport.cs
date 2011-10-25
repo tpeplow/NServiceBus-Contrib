@@ -179,6 +179,8 @@ namespace NServiceBus.Unicast.Transport.ServiceBroker
             }
         }
 
+        public string ForwardReceivedMessagesTo { get; set; }
+
         /// <summary>
         /// Changes the number of worker threads to the given target,
         /// stopping or starting worker threads as needed.
@@ -513,6 +515,9 @@ namespace NServiceBus.Unicast.Transport.ServiceBroker
                     // Set the correlation Id
                     if (string.IsNullOrEmpty(transportMessage.IdForCorrelation))
                         transportMessage.IdForCorrelation = transportMessage.Id;
+
+                    if (!string.IsNullOrEmpty(ForwardReceivedMessagesTo))
+                        this.Send(transportMessage, ForwardReceivedMessagesTo);
 
                     // care about failures here
                     var exceptionNotThrown = OnTransportMessageReceived(transportMessage);

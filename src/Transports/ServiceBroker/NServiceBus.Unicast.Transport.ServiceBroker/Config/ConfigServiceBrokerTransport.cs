@@ -31,6 +31,12 @@ namespace NServiceBus.Unicast.Transport.ServiceBroker.Config
                 ConnectionString(cfg.ConnectionString);
                 ReturnService(cfg.ReturnService);
             }
+
+            var unicastBusConfig = GetConfigSection<UnicastBusConfig>();
+            if (unicastBusConfig != null)
+            {
+                transportConfig.ConfigureProperty(t => t.ForwardReceivedMessagesTo, unicastBusConfig.ForwardReceivedMessagesTo);
+            }
         }
 
         private IComponentConfig<ServiceBrokerTransport> transportConfig;
@@ -92,6 +98,12 @@ namespace NServiceBus.Unicast.Transport.ServiceBroker.Config
         public ConfigServiceBrokerTransport TransactionTimeout(TimeSpan value)
         {
             transportConfig.ConfigureProperty(t => t.TransactionTimeout, value);
+            return this;
+        }
+
+        public ConfigServiceBrokerTransport ForwardReceivedMessagesTo(string queueName)
+        {
+            transportConfig.ConfigureProperty(t => t.ForwardReceivedMessagesTo, queueName);
             return this;
         }
     }
