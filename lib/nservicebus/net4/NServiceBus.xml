@@ -935,6 +935,26 @@
       <param name="withState">
       </param>
     </member>
+    <member name="M:NServiceBus.Saga.Saga`1.RequestUtcTimeout(System.DateTime,System.Object)">
+      <summary>
+            Request for a timeout to occur at the given time.
+            Causes a callback to the <see cref="M:NServiceBus.Saga.Saga`1.Timeout(System.Object)" /> method with the given state.
+            </summary>
+      <param name="at">
+      </param>
+      <param name="withState">
+      </param>
+    </member>
+    <member name="M:NServiceBus.Saga.Saga`1.RequestUtcTimeout(System.TimeSpan,System.Object)">
+      <summary>
+            Request for a timeout to occur at the given time.
+            Causes a callback to the <see cref="M:NServiceBus.Saga.Saga`1.Timeout(System.Object)" /> method with the given state.
+            </summary>
+      <param name="within">
+      </param>
+      <param name="withState">
+      </param>
+    </member>
     <member name="M:NServiceBus.Saga.Saga`1.ReplyToOriginator(NServiceBus.IMessage[])">
       <summary>
             Sends the given messages using the bus to the endpoint that caused this saga to start.
@@ -1041,6 +1061,19 @@
       <param name="clear">
       </param>
     </member>
+    <member name="M:NServiceBus.Saga.TimeoutMessage.CreateUtcTimeout(System.DateTime,NServiceBus.Saga.ISagaEntity,System.Object)">
+      <summary>
+            Creates a TimeoutMessage explicitly based on UTC.
+            </summary>
+      <param name="expiration">
+      </param>
+      <param name="saga">
+      </param>
+      <param name="state">
+      </param>
+      <returns>
+      </returns>
+    </member>
     <member name="M:NServiceBus.Saga.TimeoutMessage.HasNotExpired">
       <summary>
             Gets whether or not the TimeoutMessage has expired.
@@ -1068,6 +1101,11 @@
       <summary>
             When true, signals to the timeout manager that all other <see cref="T:NServiceBus.Saga.TimeoutMessage" /> objects
             can be cleared for the given <see cref="P:NServiceBus.Saga.TimeoutMessage.SagaId" />.
+            </summary>
+    </member>
+    <member name="P:NServiceBus.Saga.TimeoutMessage.IsUtc">
+      <summary>
+            When true, indicates that the timeout is based on UTC.
             </summary>
     </member>
     <member name="T:NServiceBus.Serialization.IMessageSerializer">

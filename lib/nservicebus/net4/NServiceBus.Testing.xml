@@ -172,6 +172,17 @@
       <returns>
       </returns>
     </member>
+    <member name="M:NServiceBus.Testing.Handler`1.ExpectNotPublish``1(NServiceBus.Testing.PublishPredicate{``0})">
+      <summary>
+            Check that the saga does not publish any messages of the given type complying with the given predicate.
+            </summary>
+      <typeparam name="TMessage">
+      </typeparam>
+      <param name="check">
+      </param>
+      <returns>
+      </returns>
+    </member>
     <member name="M:NServiceBus.Testing.Handler`1.ExpectDoNotContinueDispatchingCurrentMessageToHandlers">
       <summary>
             Check that the handler tells the bus to stop processing the current message.
@@ -276,6 +287,17 @@
     <member name="M:NServiceBus.Testing.Helper.ExpectPublish``1(NServiceBus.Testing.PublishPredicate{``0})">
       <summary>
             Check that the object publishes a message of the given type complying with the given predicate.
+            </summary>
+      <typeparam name="TMessage">
+      </typeparam>
+      <param name="check">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NServiceBus.Testing.Helper.ExpectNotPublish``1(NServiceBus.Testing.PublishPredicate{``0})">
+      <summary>
+            Check that the object does not publish any messages of the given type complying with the given predicate.
             </summary>
       <typeparam name="TMessage">
       </typeparam>
@@ -433,6 +455,24 @@
       </typeparam>
       <param name="check">
       </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NServiceBus.Testing.Saga`1.ExpectNotPublish``1(NServiceBus.Testing.PublishPredicate{``0})">
+      <summary>
+            Check that the saga does not publish any messages of the given type complying with the given predicate.
+            </summary>
+      <typeparam name="TMessage">
+      </typeparam>
+      <param name="check">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NServiceBus.Testing.Saga`1.ExpectHandleCurrentMessageLater">
+      <summary>
+            Check that the saga tells the bus to handle the current message later.
+            </summary>
       <returns>
       </returns>
     </member>
