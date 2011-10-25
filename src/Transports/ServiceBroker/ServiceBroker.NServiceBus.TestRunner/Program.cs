@@ -18,6 +18,7 @@ namespace TestRunner {
                 .UnicastBus()
                     .DoNotAutoSubscribe()
                     .LoadMessageHandlers()
+                    .ForwardReceivedMessagesTo("AuditService")
                 .ServiceBrokerTransport()
                     .ReturnService("ServiceA")
                     .InputQueue("ServiceAQueue")
@@ -61,7 +62,7 @@ namespace TestRunner {
         public void Handle(TestMessage message) {
             //
             Bus.Return(42);
-            throw new Exception("Testing Exception Management");
+            //throw new Exception("Testing Exception Management");
         }
     }
 
